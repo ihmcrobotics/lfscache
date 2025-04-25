@@ -253,7 +253,7 @@ func (s *Server) batch() *httputil.ReverseProxy {
 				action.Href = s.ObjectBatchActionURLRewriter(&url.URL{
 					Scheme: scheme,
 					Host:   host.host,
-					Path:   ContentCachePathPrefix + object.OID,
+					Path:   os.Getenv("IHMC_REPO_NAME") + ContentCachePathPrefix + object.OID,
 				}).String()
 
 				mac := hmac.New(sha256.New, s.hmacKey[:])
